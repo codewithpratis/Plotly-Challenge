@@ -1,5 +1,5 @@
 function getID(id) {
-    d3.json("../samples.json").then(importedData => {
+    d3.json("../data/samples.json").then(importedData => {
         console.log(importedData);
         var id_data = importedData.samples[0].otu_ids;
         console.log(id_data);
@@ -70,7 +70,7 @@ function getID(id) {
 }
 
 function getdemographic(id) {
-    d3.json("../samples.json").then((demodata) => {
+    d3.json("../data/samples.json").then((demodata) => {
         var metadata = demodata.metadata;
         console.log(metadata);
 
@@ -95,7 +95,7 @@ function init() {
     var dropdown = d3.select("#selDataset");
 
     // read the data 
-    d3.json("../samples.json").then((data) => {
+    d3.json("../data/samples.json").then((data) => {
         console.log(data)
 
         // get the id data to the dropdwown menu
