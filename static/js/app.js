@@ -1,5 +1,5 @@
 function getID(id) {
-    d3.json("../data/samples.json").then(importedData => {
+    d3.json("https://raw.githubusercontent.com/codewithpratis/Plotly-Challenge/master/data/samples.json").then(importedData => {
         console.log(importedData);
         var id_data = importedData.samples[0].otu_ids;
         console.log(id_data);
@@ -70,7 +70,7 @@ function getID(id) {
 }
 
 function getdemographic(id) {
-    d3.json("../data/samples.json").then((demodata) => {
+    d3.json("https://raw.githubusercontent.com/codewithpratis/Plotly-Challenge/master/data/samples.json").then((demodata) => {
         var metadata = demodata.metadata;
         console.log(metadata);
 
@@ -84,18 +84,13 @@ function getdemographic(id) {
     })
 }
 
-function optionChanged(id) {
-    getID(id);
-    getdemographic(id);
-}
-
 
 function init() {
     // select dropdown menu 
     var dropdown = d3.select("#selDataset");
 
     // read the data 
-    d3.json("../data/samples.json").then((data) => {
+    d3.json("https://raw.githubusercontent.com/codewithpratis/Plotly-Challenge/master/data/samples.json").then((data) => {
         console.log(data)
 
         // get the id data to the dropdwown menu
@@ -105,9 +100,12 @@ function init() {
 
         // call the functions to display the data and the plots to the page
         getID(data.names[0]);
-        //getDemoInfo(data.names[0]);
+        getdemographic(id);
     });
 }
-
+function optionChanged(id) {
+    getID(id);
+    getdemographic(id);
+}
 init();
 
